@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mini Project 22</title>
+<style>
+body {
+  font-family: sans-serif;
+  margin-top: 10%;
+  margin-right: 50px;
+}
+
+#input-area {
+  width: 500px;
+  height: 150px;
+  margin-top: 20px;
+  margin-left: 35%;
+  font-size: 30px;
+  text-align: center;
+}
+
+.h2{
+  text-align: center;
+  font-size: 50px;
+}
+button {
+  padding: 20px;
+  margin-left: 35%;
+  margin-top: 20px;
+  font-size: 30px;
+  border-radius: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 500px; 
+  margin-top: 10px;
+  margin-left: 35%; 
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+<div id="container">
+  <h2 class="h2">Trayek</h2>
+  <textarea id="input-area" placeholder="Masukan Data"></textarea>
+  <br>
+  <button onclick="generateTable()">Generate</button>
+  <table id="trayek-table"></table>
+</div>
+
+<script>
+function generateTable() {
+  const inputText = document.getElementById("input-area").value;
+  const trayekList = inputText.split(",");
+
+  const table = document.getElementById("trayek-table");
+  table.innerHTML = "";
+
+  const tableHeader = table.insertRow();
+  const headerCell = tableHeader.insertCell();
+  headerCell.innerHTML = "<strong>Trayek</strong>";
+
+  trayekList.forEach(trayek => {
+    const [origin, destination] = trayek.trim().split(" ");
+    const row = table.insertRow();
+    const cell = row.insertCell();
+    cell.innerHTML = `${origin} - ${destination}`;
+  });
+}
+</script>
+</body>
+</html>
